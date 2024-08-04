@@ -1,0 +1,40 @@
+listen: :18443
+
+auth:
+  type: password
+  password: password
+
+masquerade:
+  type: proxy
+  file:
+    dir: /www/web 
+  proxy:
+    url: https://www.bing.com/
+    rewriteHost: true 
+  string:
+    content: hello rabbit world 
+    headers: 
+      content-type: text/plain
+      custom-stuff: life feels so good
+    statusCode: 200 
+
+bandwidth:
+  up: 478 mbps
+  down: 64 mbps
+
+ignoreClientBandwidth: false
+
+udpIdleTimeout: 90s
+
+quic:
+  initStreamReceiveWindow: 26843545 
+  maxStreamReceiveWindow: 26843545 
+  initConnReceiveWindow: 67108864 
+  maxConnReceiveWindow: 67108864
+  maxIdleTimeout: 90s 
+  maxIncomingStreams: 1800 
+  disablePathMTUDiscovery: false 
+
+tls:
+  cert: /etc/hysteria/server.crt
+  key: /etc/hysteria/server.key
